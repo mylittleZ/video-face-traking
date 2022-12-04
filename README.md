@@ -1,5 +1,5 @@
 
-## Project setup 
+## Project setup （项目依赖安装及启动）
 
 ```
 npm install
@@ -22,3 +22,7 @@ npm run build
 ```
 npm run lint
 ```
+
+## Project example screenshot（示例截图）
+
+![image](https://user-images.githubusercontent.com/30174451/205483043-cd8c89f2-37e2-4f94-aea5-f7d09e339c49.png)
