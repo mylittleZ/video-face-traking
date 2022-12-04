@@ -2,11 +2,11 @@
   <div>
     <div class="option">
       <div>
-        <label>视频控制：</label>
-        <button @click="fnPaused">暂停Or播放</button>
+        <label>Video Control（视频控制）:</label>
+        <el-button type="success" @click="fnPaused">CLICK TO PLAY</el-button>
       </div>
       <div>
-        <label>更换视频：</label>
+        <label>Replace Video （更换视频）：</label>
         <input
           type="file"
           accept="video/mp4, video/ogg, video/webm"
@@ -14,37 +14,37 @@
         />
       </div>
       <div>
-        <span style="margin-right: 20px;">检测识别类型：</span>
+        <span style="margin-right: 20px;">Detection of identification type（检测识别类型）：</span>
         <label>
-          轮廓检测
+          Age and gender detection
+          <input type="radio" v-model="detection" value="age_gender" />
+        </label>
+        <label>
+          Contour detection
           <input type="radio" v-model="detection" value="landmark" />
         </label>
         <label>
-          表情检测
+          Expression Detection
           <input type="radio" v-model="detection" value="expression" />
-        </label>
-        <label>
-          年龄性别检测
-          <input type="radio" v-model="detection" value="age_gender" />
         </label>
       </div>
       <div>
-        <label>边框Or面部轮廓：</label>
+        <label>Check to recognize facial borders（边框或面部轮廓）：</label>
         <input type="checkbox" v-model="withBoxes" />
       </div>
       <div>
-        <label>检测人脸：</label>
+        <label>detectFaceNumber（检测人脸）：</label>
         <label>
-          可信单
-          <input type="radio" v-model="detectFace" value="detectSingleFace" />
+          detectAllFaces
+          <input type="radio" v-model="detectFace" value="detectAllFaces" />
         </label>
         <label>
-          模糊多
-          <input type="radio" v-model="detectFace" value="detectAllFaces" />
+          detectSingleFace
+          <input type="radio" v-model="detectFace" value="detectSingleFace" />
         </label>
       </div>
       <div>
-        <label>选择算法模型</label>
+        <label>Selecting an algorithmic model（选择算法模型）</label>
         <label>
           ssdMobilenetv1
           <input type="radio" v-model="nets" value="ssdMobilenetv1" />
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="see">
-      <video id="myVideo" src="videos/test.mp4" muted playsinline></video>
+      <video id="myVideo" src="videos/default.mp4" muted playsinline></video>
       <canvas id="myCanvas" />
     </div>
   </div>
@@ -74,9 +74,9 @@ export default {
     return {
       nets: "tinyFaceDetector", // 模型
       options: null, // 模型参数
-      withBoxes: true, // 框or轮廓
-      detectFace: "detectSingleFace", // 单or多人脸
-      detection: "landmark",
+      withBoxes: false, // 框or轮廓
+      detectFace: "detectAllFaces", // 单or多人脸
+      detection: "age_gender",
       videoEl: null,
       canvasEl: null,
       timeout: 0,
